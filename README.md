@@ -37,7 +37,7 @@ camino a producción y endurecer la seguridad de lo que se sirve.
 
 1. **Node.js 20 o superior** y **Git** instalados.
 2. Crea un proyecto en <https://console.firebase.google.com> (plan Spark, sin Analytics).
-   Anotá el **Project ID** (ej. `cursos-ana-7f3a2`).
+   Anota el **Project ID** (ej. `cursos-ana-7f3a2`).
 3. Creá tu repo en GitHub a partir de este (botón _Use this template_, o descargá el zip
    y subilo a un repo **tuyo**; no trabajes sobre un fork, ver _Problemas comunes_).
 4. Cloná tu repo e instalá dependencias:
