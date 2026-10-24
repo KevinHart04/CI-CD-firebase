@@ -56,4 +56,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CI_CD_PROGRAMACION_AVANZADA}}
           projectId: ci-cd-programacion-avanzada
           # TODO A3: ¿qué valor de channelId publica en producción?
-          # channelId: ???
+          channelId: main
