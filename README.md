@@ -51,7 +51,8 @@ camino a producción y endurecer la seguridad de lo que se sirve.
    npm run build
    npm run serve        # emulador de Hosting en http://localhost:5000
    ```
-7. Conectá GitHub con Firebase (crea la service account y el secreto en tu repo):
+7. Conecta GitHub con Firebase (crea la service account y el secreto en tu repo):
+
    ```bash
    npx firebase init hosting:github
    ```
@@ -62,6 +63,7 @@ camino a producción y endurecer la seguridad de lo que se sirve.
      `git checkout -- .github/workflows`.
    - Al terminar, verificá en GitHub → _Settings → Secrets and variables → Actions_ que
      exista un secreto llamado `FIREBASE_SERVICE_ACCOUNT_...`. **Anotá ese nombre.**
+
 8. Primer deploy manual para confirmar que todo anda:
    ```bash
    npx firebase deploy --only hosting
