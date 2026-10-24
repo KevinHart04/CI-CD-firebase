@@ -8,7 +8,8 @@ name: Deploy a producción
 
 # DONE A1: Cambiá el trigger para que corra en cada push a la rama `main`.
 on:
-  pull_request:
+  push:
+    branches: [main]
 
 permissions:
   contents: read
