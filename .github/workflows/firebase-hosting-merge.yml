@@ -6,9 +6,9 @@
 # ─────────────────────────────────────────────────────────────────────────────
 name: Deploy a producción
 
-# TODO A1: Cambiá el trigger para que corra en cada push a la rama `main`.
+# DONE A1: Cambiá el trigger para que corra en cada push a la rama `main`.
 on:
-  workflow_dispatch:
+  pull_request:
 
 permissions:
   contents: read

@@ -23,13 +23,13 @@ camino a producción y endurecer la seguridad de lo que se sirve.
                                                 Firebase Hosting (CDN global)
 ```
 
-| Pieza | Rol |
-|---|---|
-| `next.config.ts` | `output: "export"` → `next build` genera HTML/JS/CSS estáticos en `out/` |
-| `firebase.json` | Qué carpeta se publica, URLs limpias y **headers HTTP** (lo completás vos) |
-| `.github/workflows/*.yml` | Pipelines de preview (PR) y producción (merge a `main`) — **con TODOs** |
-| `scripts/check-headers.mjs` | Verifica los headers de seguridad y caché de un despliegue |
-| Footer de la app | Muestra commit, rama y fecha de build → sirve para saber qué versión está viva |
+| Pieza                       | Rol                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| `next.config.ts`            | `output: "export"` → `next build` genera HTML/JS/CSS estáticos en `out/`       |
+| `firebase.json`             | Qué carpeta se publica, URLs limpias y **headers HTTP** (lo completás vos)     |
+| `.github/workflows/*.yml`   | Pipelines de preview (PR) y producción (merge a `main`) — **con TODOs**        |
+| `scripts/check-headers.mjs` | Verifica los headers de seguridad y caché de un despliegue                     |
+| Footer de la app            | Muestra commit, rama y fecha de build → sirve para saber qué versión está viva |
 
 ---
 
@@ -38,8 +38,8 @@ camino a producción y endurecer la seguridad de lo que se sirve.
 1. **Node.js 20 o superior** y **Git** instalados.
 2. Creá un proyecto en <https://console.firebase.google.com> (plan Spark, sin Analytics).
    Anotá el **Project ID** (ej. `cursos-ana-7f3a2`).
-3. Creá tu repo en GitHub a partir de este (botón *Use this template*, o descargá el zip
-   y subilo a un repo **tuyo**; no trabajes sobre un fork, ver *Problemas comunes*).
+3. Creá tu repo en GitHub a partir de este (botón _Use this template_, o descargá el zip
+   y subilo a un repo **tuyo**; no trabajes sobre un fork, ver _Problemas comunes_).
 4. Cloná tu repo e instalá dependencias:
    ```bash
    npm install
@@ -55,11 +55,12 @@ camino a producción y endurecer la seguridad de lo que se sirve.
    ```bash
    npx firebase init hosting:github
    ```
+
    - Elegí tu repo `usuario/nombre-repo`.
    - Si pregunta si querés sobrescribir archivos de workflow existentes, respondé **No**:
      los workflows ya vienen en este repo. Si igual los reemplaza, restauralos con
      `git checkout -- .github/workflows`.
-   - Al terminar, verificá en GitHub → *Settings → Secrets and variables → Actions* que
+   - Al terminar, verificá en GitHub → _Settings → Secrets and variables → Actions_ que
      exista un secreto llamado `FIREBASE_SERVICE_ACCOUNT_...`. **Anotá ese nombre.**
 8. Primer deploy manual para confirmar que todo anda:
    ```bash
@@ -73,13 +74,13 @@ camino a producción y endurecer la seguridad de lo que se sirve.
 
 ### Parte A — Pipeline (los TODO están en `.github/workflows/`)
 
-| TODO | Qué hacer |
-|---|---|
-| A1 | Triggers: `pull_request` para preview, `push` a `main` para producción |
-| A2 | Inyectar SHA, rama y fecha del build como variables `NEXT_PUBLIC_BUILD_*` |
-| A3 | Nombre del secreto, `projectId`, `expires` del preview y `channelId` de producción |
-| A4 *(opcional)* | `concurrency` distinto para preview y producción |
-| A5 *(opcional)* | GitHub Environment `production` |
+| TODO            | Qué hacer                                                                          |
+| --------------- | ---------------------------------------------------------------------------------- |
+| A1              | Triggers: `pull_request` para preview, `push` a `main` para producción             |
+| A2              | Inyectar SHA, rama y fecha del build como variables `NEXT_PUBLIC_BUILD_*`          |
+| A3              | Nombre del secreto, `projectId`, `expires` del preview y `channelId` de producción |
+| A4 _(opcional)_ | `concurrency` distinto para preview y producción                                   |
+| A5 _(opcional)_ | GitHub Environment `production`                                                    |
 
 Flujo de prueba:
 
@@ -91,7 +92,7 @@ git push -u origin feat/mi-cambio
 # abrí el PR en GitHub → esperá el comentario del bot con la URL del preview
 ```
 
-Rollback: Firebase Console → Hosting → *Release history* → ⋮ → **Rollback**.
+Rollback: Firebase Console → Hosting → _Release history_ → ⋮ → **Rollback**.
 Promover un preview a producción sin rebuild:
 
 ```bash
@@ -111,7 +112,7 @@ npx firebase hosting:clone <PROJECT_ID>:<CANAL_PREVIEW> <PROJECT_ID>:live
    npm run build && npm run serve
    node scripts/check-headers.mjs http://localhost:5000
    ```
-   Abrí <http://localhost:5000/cursos> con DevTools → *Console*: si el filtro dejó de
+   Abrí <http://localhost:5000/cursos> con DevTools → _Console_: si el filtro dejó de
    funcionar, la CSP está bloqueando algo. Leé el error: te dice qué y por qué.
 4. Cuando pase en local, hacelo por PR: el preview te deja validarlo antes de producción.
 
@@ -135,14 +136,14 @@ Formato de un header en `firebase.json`:
 
 ## Comandos útiles
 
-| Comando | Para qué |
-|---|---|
-| `npm run dev` | Desarrollo local con hot reload (no aplica headers de `firebase.json`) |
-| `npm run build` | Export estático a `out/` |
-| `npm run serve` | Emulador de Hosting: sirve `out/` **con** los headers de `firebase.json` |
-| `npm run typecheck` | Chequeo de tipos (también corre en el pipeline) |
-| `npx firebase hosting:channel:list` | Lista canales de preview y sus vencimientos |
-| `npx firebase hosting:channel:delete <canal>` | Borra un preview |
+| Comando                                       | Para qué                                                                 |
+| --------------------------------------------- | ------------------------------------------------------------------------ |
+| `npm run dev`                                 | Desarrollo local con hot reload (no aplica headers de `firebase.json`)   |
+| `npm run build`                               | Export estático a `out/`                                                 |
+| `npm run serve`                               | Emulador de Hosting: sirve `out/` **con** los headers de `firebase.json` |
+| `npm run typecheck`                           | Chequeo de tipos (también corre en el pipeline)                          |
+| `npx firebase hosting:channel:list`           | Lista canales de preview y sus vencimientos                              |
+| `npx firebase hosting:channel:delete <canal>` | Borra un preview                                                         |
 
 ## Problemas comunes
 

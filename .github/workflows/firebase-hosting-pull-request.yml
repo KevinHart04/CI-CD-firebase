@@ -7,9 +7,9 @@
 # ─────────────────────────────────────────────────────────────────────────────
 name: Preview en Pull Request
 
-# TODO A1: Cambiá el trigger para que este workflow corra en cada Pull Request.
+# DONE: A1: Cambiá el trigger para que este workflow corra en cada Pull Request.
 on:
-  workflow_dispatch:
+  pull_request:
 
 permissions:
   contents: read
