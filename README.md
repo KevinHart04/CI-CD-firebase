@@ -36,7 +36,7 @@ camino a producción y endurecer la seguridad de lo que se sirve.
 ## Pre-clase (hacelo ANTES de la clase, ~20 min)
 
 1. **Node.js 20 o superior** y **Git** instalados.
-2. Creá un proyecto en <https://console.firebase.google.com> (plan Spark, sin Analytics).
+2. Crea un proyecto en <https://console.firebase.google.com> (plan Spark, sin Analytics).
    Anotá el **Project ID** (ej. `cursos-ana-7f3a2`).
 3. Creá tu repo en GitHub a partir de este (botón _Use this template_, o descargá el zip
    y subilo a un repo **tuyo**; no trabajes sobre un fork, ver _Problemas comunes_).
